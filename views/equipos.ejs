@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Equipos</title>
+</head>
+<body>
+  <header>
+    <h1>Material informático</h1>
+  </header>
+
+  <main>
+    <form action="/equipos" method="get">
+      <label>Nombre
+        <input name="q" value="<%= filtros.q %>" maxlength="80">
+      </label>
+
+      <label>Categoría
+        <select name="categoria">
+          <option value="">Todas</option>
+          <% for (const valor of Object.keys(categorias)) { %>
+            <option value="<%= valor %>" <%= filtros.categoria === valor ? 'selected' : '' %>>
+              <%= categorias[valor] %></option>
+          <% } %>
+        </select>
+      </label>
+
+      <label>Estado
+        <select name="estado">
+          <option value="">Todos</option>
+          <option value="disponible" <%= filtros.estado === 'disponible' ? 'selected' : '' %>>
+            Disponible</option>
+          <option value="prestado" <%= filtros.estado === 'prestado' ? 'selected' : '' %>>
+            Prestado</option>
+        </select>
+      </label>
+
+      <label>Ordenar por
+        <select name="orden">
+          <option value="codigo" <%= filtros.orden === 'codigo' ? 'selected' : '' %>>
+            Código</option>
+          <option value="nombre" <%= filtros.orden === 'nombre' ? 'selected' : '' %>>
+            Nombre</option>
+        </select>
+      </label>
+
+      <button>Buscar</button>
+      <a href="/equipos">Quitar filtros</a>
+    </form>
+
+    <% if (equipos.length === 0) { %>
+      <p>No hay equipos que cumplan los filtros en esta página.</p>
+    <% } else { %>
+      <table>
+        <thead>
+          <tr>
+            <th>Código</th>
+            <th>Nombre</th>
+            <th>Categoría</th>
+            <th>Estado</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% for (const equipo of equipos) { %>
+            <tr>
+              <td><a href="/equipos/<%= equipo.id %>"><%= equipo.codigo %></a></td>
+              <td><%= equipo.nombre %></td>
+              <td><%= equipo.categoriaTexto %></td>
+              <td><%= equipo.estadoTexto %></td>
+            </tr>
+          <% } %>
+        </tbody>
+      </table>
+    <% } %>
+
+    <nav>
+      <p>Página <%= filtros.pagina %></p>
+      <% if (anterior) { %><a href="<%= anterior %>">Anterior</a><% } %>
+      <% if (siguiente) { %><a href="<%= siguiente %>">Siguiente</a><% } %>
+    </nav>
+  </main>
+</body>
+</html>
