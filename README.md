@@ -1,5 +1,5 @@
 # Práctica DWES UD4 · Gestión de préstamos de material informático
-
+link IA: https://gemini.google.com/app/e60d01d3dac6ad4c?utm_source=app_launcher&utm_medium=owned&utm_campaign=base_all
 Aplicación Express que mantiene el inventario de equipos de un centro y registra
 préstamos y devoluciones en PostgreSQL usando SQL directo con `pg`, consultas
 parametrizadas, restricciones y transacciones.
