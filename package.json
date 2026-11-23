@@ -4,6 +4,7 @@
   "description": "Gestión de préstamos de material informático (DWES, UD4)",
   "private": true,
   "scripts": {
+    "preparar": "bash preparar.sh",
     "start": "node --env-file=.env src/server.mjs",
     "comprobar": "node --env-file=.env comprobar.mjs"
   },

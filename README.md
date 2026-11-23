@@ -4,6 +4,25 @@ Aplicación Express que mantiene el inventario de equipos de un centro y registr
 préstamos y devoluciones en PostgreSQL usando SQL directo con `pg`, consultas
 parametrizadas, restricciones y transacciones.
 
+## 0. Arranque rápido
+
+Con Docker Desktop abierto, desde la carpeta del proyecto:
+
+```
+npm run preparar
+npm start
+```
+
+`npm run preparar` ejecuta `preparar.sh`, que hace de una vez los pasos de los
+apartados 3, 4 y 5: crea los `.env` que falten (a partir de los `.env.example`),
+instala las dependencias, arranca PostgreSQL con Docker Compose y espera a que
+esté `healthy`, crea o actualiza el usuario `dwes_app` con la clave de `.env` y
+carga `init.sql`. Se puede repetir: vuelve a dejar los datos en el estado
+inicial, por ejemplo antes de `npm run comprobar` (en otra terminal, con el
+servidor arrancado).
+
+Los apartados siguientes explican cada paso por separado.
+
 ## 1. Requisitos
 
 - Node.js 24 (`node --version`) y npm.
@@ -24,6 +43,7 @@ practica-prestamos/
   package.json
   package-lock.json       (lo genera npm install)
   comprobar.mjs           Comprobaciones del apartado 7 con fetch y pg
+  preparar.sh             Preparación completa en un paso (npm run preparar)
   src/
     server.mjs            Arranque de Express, comprobación inicial y cierre
     db.mjs                Validación de variables PG y creación del pool
