@@ -1,0 +1,8 @@
+# Saltos de línea LF también en Windows (preparar.sh no funciona con CRLF)
+*.sh text eol=lf
+*.sql text eol=lf
+*.mjs text eol=lf
+*.ejs text eol=lf
+*.json text eol=lf
+*.yaml text eol=lf
+.env.example text eol=lf
